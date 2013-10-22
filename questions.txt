@@ -8,18 +8,23 @@
 	GIF
 
 2.  What's the difference between lossy and lossless compression?
-		Lossy compression throws away some of the data in a file. Lossless uses an algorithm to compress a file that is reversible, hence, the quality of the file can move back and forth between the two states.
+		Lossy compression throws away some of the data in a file. 
+		Lossless uses an algorithm to compress a file that is reversible, hence, 
+		the quality of the file can move back and forth between the two states.
 
 3.  Which of these formats is lossy-compressed?
 		JPEG
 
-4.  What happens when a file is deleted from a FAT file system? FAT stands for File Allocation Table; when a file is deleted, the information in the 		address table is erased, but the file itself remains on the hard drive.
+4.  What happens when a file is deleted from a FAT file system? FAT stands for
+	File Allocation Table; when a file is deleted, the information in the
+	address table is erased, but the file itself remains on the hard drive.
 
 5.  What can someone like you do to ensure (with high probability) that files you delete cannot be recovered? 
 	Delete files using a secure delete option. That replaces the section on disc with all zeroes.
 
 6.  What is stdint.h?
-	stdint.h is a header file that declares specified integer types as having a certain width.
+	stdint.h is a header file that declares specified integer types as having a certain width. What does
+	this mean?
 
 7.  What's the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
 	It makes clear that you intend to use the data a specific way.
@@ -43,11 +48,15 @@
 	biSize specifies the size of the structure in bytes.
 
 11. What does it mean if biHeight is negative?
-	If biHeight is positive, the bitmap is a bottom-up DIB (device-independent bitmap) and its origin is the lower left corner.
-	If biHeight is negative, the bitmap is a top-down DIB (device-independent bitmap) and its origin is the upper left corner.
+	If biHeight is positive, the bitmap is a bottom-up DIB (device-independent bitmap)
+	and its origin is the lower left corner.
+	
+	If biHeight is negative, the bitmap is a top-down DIB (device-independent bitmap)
+	and its origin is the upper left corner.
 
 12. What field in BITMAPINFOHEADER specifies the BMP's color depth (i.e., bits per pixel)?
-	The biBitCount member of the BITMAPINFOHEADER structure determines the number of bits that define each pixel and the maximum number of colors in the bitmap.
+	The biBitCount member of the BITMAPINFOHEADER structure determines the number of
+	bits that define each pixel and the maximum number of colors in the bitmap.
 
 13. Why might fopen return NULL in copy.c:37?
 	fopen will return NULL if it cannot create the outfile to write to. I don't know why that might happen.
@@ -56,25 +65,32 @@
 	I think it is because the program is reading in 1 RGB triple at a time. The header comments seem to confirm.
 
 15. What value does copy.c:70 assign padding if bi.biWidth is 3?
-	biWidth is the width of the bitmap in pixels. If the width is 3, padding is necessary since the scanline must be a multiple of 4.
-	3 pixels * 3 bytes per pixel = 9 bytes. 3 bytes are added to bring the scanline to 12 bytes. I don't understand the math, though.
+	biWidth is the width of the bitmap in pixels. If the width is 3, padding is necessary since
+	the scanline must be a multiple of 4.
+	3 pixels * 3 bytes per pixel = 9 bytes. 3 bytes are added to bring the scanline to 12 bytes.
+	I don't understand the math, though.
 
 16. What does fseek do?
 	Skips over any padding and looks for the next pixel (RGB triple)
 
 17. what is SEEK_CUR?
-	This is an integer constant which, when used as the whence argument to the fseek or fseeko function, specifies that the offset provided is relative to the current file position
+	This is an integer constant which, when used as the whence argument to the fseek or fseeko function,
+	specifies that the offset provided is relative to the current file position
 
 18. Whodunit?
 	It looks like a teddy bear to me.
 
-What does Valgrind do? It checks a program for memory leaks.
+19. What does Valgrind do? It checks a program for memory leaks.
 You use it in a similar way to GDB.
-To which stream do functions like printf write by default? stdio
-What's the difference between > and >>? 
+
+20. To which stream do functions like printf write by default? 
+	stdio
+
+21. What's the difference between > and >>? 
 	> will overwrite the contents of a file
 	>> will append to the contents of a file
-What pipeline could you use to find the number of unique names in a file called names.txt?
+	
+22. What pipeline could you use to find the number of unique names in a file called names.txt?
 	sort < names.txt > sort.txt
 	uniq < sort.txt | wc -l
 	OR
