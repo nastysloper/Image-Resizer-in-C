@@ -59,10 +59,16 @@
 	bits that define each pixel and the maximum number of colors in the bitmap.
 
 13. Why might fopen return NULL in copy.c:37?
-	fopen will return NULL if it cannot create the outfile to write to. I don't know why that might happen.
+	fopen will return NULL if it cannot create the outfile to write to.
+	It might happen due to permission restriction or illegal file names. Such as:
+	Trying to create a file in read-only directory
+	Creating file with name "/file"
 
 14. Why is the third argument to fread always 1 in our code?
-	I think it is because the program is reading in 1 RGB triple at a time. The header comments seem to confirm.
+	The third argument in fread specifies to read first n elements of an array.
+	And array size is specified in 2nd argument.
+	So first read complete BITMAPFILEHEADER, then read complete BITMAPINFOHEADER and then read 1 RGBTRIPLE at a time.
+	The header comments seem to confirm.
 
 15. What value does copy.c:70 assign padding if bi.biWidth is 3?
 	biWidth is the width of the bitmap in pixels. If the width is 3, padding is necessary since
